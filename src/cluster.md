@@ -1,3 +1,5 @@
+# Setup Rancher on Server
+
 ## Server Specs
 Als Server habe ich ein Server mit 2 Intel CPU Cores und 4 GB RAM ausgewählt. Als Image habe ich ein custom Image ausgewählt, welches ich einmal vor langer zeit erstellt habe. Es verwendet als OS Debian 11 und beinhaltet die wichtigsten Konfigurationen, welche man grudsätzlich auf allen Server haben sollte wie z.B. Konfigurierte Non Root User mit `SSH` Key usw. Durch dieses custom Image kann ich relativ schnell Server erstellen ohne grösseren Aufwand
 
@@ -17,5 +19,16 @@ $sudo apt update && sudo apt full-upgrade -y && sudo reboot
 Als erstes brauche ich natürlich eine Docker Engine. Dafür verwende ich das `docker.io` Package welches von den offizielen Debian Repositorys zur Verfügung gestellt wird
 
 ```bash
-$sudo apt install docker.io -y
+$sudo apt install docker.io apparmor -y
+```
+
+Als nächstes habe ich einen DNS request gemacht, welcher mit der Domain `rancher.bbzbl-it.dev` auf die öffentliche IP vom gerade eben genannten Server zeigt. 
+
+
+
+```
+docker run -d --restart=unless-stopped \
+    -p 80:80 -p 443:443 \
+    rancher/rancher:latest \
+    --acme-domain rancher.bbzbl-it.dev
 ```
