@@ -5,10 +5,10 @@ Der Server ferfügt sowohl über eine Öffentliche IP wie allerdings auch über 
 ## Updaten des Servers
 
 Was ich allerdings troz des custom Images noch machen muss ist den Server einmal zu updaten. Sol läuft er z.B. immernoch auf den Linuxkernal Version `5.10.0-19-amd64` der neuste Kernal der zum aktuellen Zeitpunkt für Debian 11 zur Verfügung steht ist `5.10.0-21-amd64`.
-```
+```bash
 $uname -a
 Linux RancherNode1 5.10.0-19-amd64 #1 SMP Debian 5.10.149-2 (2022-10-21) x86_64 GNU/Linux
-```bash
+```
 Command um den Server upzudaten und neuzustarten
 ```bash
 $sudo apt update && sudo apt full-upgrade -y && sudo reboot
