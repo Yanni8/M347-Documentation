@@ -2,4 +2,4 @@
 
 
 - [Devcontainer](./src/devcontainer.md)
-- [Rancher on K3s](./src/cluster.md)
+- [Rancher on RKE](./src/cluster.md)
