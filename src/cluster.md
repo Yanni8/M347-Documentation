@@ -78,3 +78,28 @@ Nachdem dieser Schritt erledigt war konnte ich einfach über die UI das Kluster 
 Anschlissend dauerte es etwa 10 minuten bis alle Server korrekt eingerichtet waren und das Cluster erreichbar war. 
 
 ![Screenshot from 2023-04-09 16-05-14](https://user-images.githubusercontent.com/99135388/230939681-55190075-38a7-44a8-bc71-ea9f95b813e8.png)
+
+
+![Screenshot from 2023-04-09 16-04-11](https://user-images.githubusercontent.com/99135388/230948634-5932c7ea-21b3-4460-95be-8a3a03b812fa.png)
+
+Anschliessend habe ich einen Test `Nginx` Container Deployt. Das Deployen des Containers und das erstellen eines Ingres verlief ohne grössere Probleme. Leider stellte sich etwas später heraus, dass der Ingress jedesm mal nachdem man ihn anspricht timeouted. Laut dem Internet liegt das häuffig daran das der Port `8472/UDP` nicht geöffnet ist. Allso habe ich `nmap` verwendet um herauszufinden, ob der Port wirklich nicht offen ist.
+```bash
+root@prodcluster-ew1:~# nmap -p8472 -sU <IP>
+Starting Nmap 7.80 ( https://nmap.org )
+Nmap scan report for ****
+Host is up (0.0010s latency).
+
+PORT     STATE         SERVICE
+8472/udp closed otv
+
+Nmap done: 1 IP address (1 host up) scanned in 0.36 seconds
+``` 
+Und tatsächlich stellte sich heraus, dass der Port geschlossen war. Nach einer etwas längereren Recherche stellte sich heraus, dass für die Comunication wenn nicht angegeben das Netzwerkinterface `eth0` verwendet wird. Aus diesem Grund musste ich in der Netzwerkconfiguration explizit angeben welches Netzwerk verwendet werden sollte. Nach einem restart der verschiedenen Nodes hat dann auch der Ingress funktioniert.
+
+```yml
+  network:
+    canal_network_provider:
+      iface: <Interface>
+    flannel_network_provider:
+      iface: <Interface>
+```
