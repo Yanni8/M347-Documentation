@@ -37,3 +37,16 @@ docker run -d --restart=unless-stopped \
     rancher/rancher:latest \
     --acme-domain rancher.bbzbl-it.dev
 ```
+
+#### Erstes einloggen
+
+Nach dem der Dockercontainer nach etwa 15 Sekunden vollständig aufgestartet war konnte ich das random generierte initiale Password ganz einfach durch die Logs auslesen.
+```bash
+sudo docker logs  $(sudo docker ps -q)  2>&1 | grep "Bootstrap Password:"
+```
+<br/>
+Nach dem ersten einloggen auf der Webui wird man dann anschliessend dazu aufgefordert, dass Password abzuändern. Das habe ich dann natürlich auch gemacht. Ebenfalls ist es **wichtig** dass man den Hacken unkreuzt, dass man sich dazu bereit erklärt Anonyme Nutzerdaten zu senden. Natürlich ist es jedem selber überlassen ob man Anonyme Daten senden möchte. Allerdings muss man es explizit **nicht** ankreuzen da es per default angekreuzt ist.
+
+![Screenshot from 2023-04-09 14-34-57](https://user-images.githubusercontent.com/99135388/230933329-e8228e9e-38c4-4feb-97ac-dced13339abe.png)
+
+
