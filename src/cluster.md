@@ -50,3 +50,26 @@ Nach dem ersten einloggen auf der Webui wird man dann anschliessend dazu aufgefo
 ![Screenshot from 2023-04-09 14-34-57](https://user-images.githubusercontent.com/99135388/230933329-e8228e9e-38c4-4feb-97ac-dced13339abe.png)
 
 
+#### Erstellen eines ersten Clusters
+
+Nachdem ich mich eingeloggt habe, habe ich als erstes ein neues Cluster erstellt. Auf diesem Cluster beabsichtige ich dann alle Resourcen zu Deployen. Um einfach Clusters zu erstellen kann man sogennante [Node Drivers](https://ranchermanager.docs.rancher.com/v2.5/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers) verweden. Diese können je nach Anbieter konfiguriert werden und erstellen automatisiert Server und überwachen diese auch. 
+<br/>
+
+![Screenshot from 2023-04-09 14-36-35](https://user-images.githubusercontent.com/99135388/230936188-2e46472e-4939-4a4e-ace8-4fdff9701e26.png)
+
+<br/>
+Leider ist per default kein Node Driver für meinen Cloud Anbieter vorhanden. Aus diesem Grund musste ich zuerst im Internet nach einem passenden Suchen. Und bin schliesslich auch [fundig geworden](https://github.com/mxschmitt/ui-driver-hetzner)
+Das Hinzufügen des Drivers verlief dann relativ schnell und unkomliziert. Alles was ich machen musste war, dass ich die URL angeben musste, mit welcher der Node Driver hinuntergeladen werden konnte.
+
+![Screenshot from 2023-04-09 14-38-01](https://user-images.githubusercontent.com/99135388/230936326-86a02f62-1493-45f2-b9df-698accda67a2.png)
+
+<br/>
+
+Nach dem Hnzufügen konnte ich einfach auf der View `Cluster Erstellen` meinen Cloud Provider auswählen. Ich fand es auch cool, dass es Support für VSphere gab. Dadurch könnte man auch ganz einfach in einer Private Cloud (Wenn man VSphere verwendet) mithilfe von Node Drivers ein eigenes Kubernetscluster aufbauen. 
+
+![Screenshot from 2023-04-09 14-38-39](https://user-images.githubusercontent.com/99135388/230937141-45e7b4ec-11fa-4647-b12c-890ac1369546.png)
+
+Nachher musste ich zuerst bei meinem Cloud provider ein `Privates Network` und eine `Placement Group` erstellen. Zwar ist dieser Schritt optional allerdings bietet er grosse Vorteile. Ein `Privates Network` sorgt dafür, dass bestimmte möglicherweise sensitive Ports nicht öffentliche erreichbar sind und zudem traffic nicht mitgeschnitten werden kann (auch wenn theoretisch jeglicher Traffic encryptet sein sollte). Eine `Placement Group` sorgt dafür, dass die Server Physikalisch und Logisch voneiander unabhängig sind. So würde z.B. der Ausfall von enem Networkswitch nur dazu führen dass 1 und icht gleich alle 3 Nodes nichtmehr erreichbar sind. 
+
+
+![Screenshot from 2023-04-09 14-43-49](https://user-images.githubusercontent.com/99135388/230937059-e84c8bc0-50fc-4613-afc8-a48dd9b8da96.png)
