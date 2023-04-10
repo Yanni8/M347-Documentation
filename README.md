@@ -2,4 +2,4 @@
 
 
 - [Devcontainer](./src/devcontainer.md)
-- [Kubernets Cluster](./src/cluster.md)
+- [Rancher on RKE](./src/cluster.md)
