@@ -25,10 +25,15 @@ $sudo apt install docker.io apparmor -y
 Als nächstes habe ich einen DNS request gemacht, welcher mit der Domain `rancher.bbzbl-it.dev` auf die öffentliche IP vom gerade eben genannten Server zeigt. 
 
 
+#### Starten des Management Clusters
+Als erste musste ich das Management Cluster starten. Dieses ist dafür zuständig die verschiedensten Cluster zu managen, zu überwachen und stellt auch die Rancher UI zur Verfügung. Theoretisch kann man auch mehrere Server zu einem Managementcluster verbinden, um die Ausfahlsicherheit zu erhöhen. Da allerdings der Ausfall vom Managementcluster keinen Direckten impact auf die deployten applicationen hat habe ich mich aus Kostengründen dazu etnschieden das Managementcluster auf eier einzelnen Node zu deployen.
+
+Um das Managementcluster einfach zu deployen verwende ich das [Offizielle Docker Image](https://hub.docker.com/r/rancher/rancher) von Rancher. Dieses deployt alle nötigen Container und das singel Node Kubernetscluster in einem einzelnen Dockercontainer. Da das deployen eines Kubernetscluster direckten Zugriff auf den Linux Kernal benötigt muss ich den Dockercontainer mit der `--privileged` Flag starten. Dadurch fällt aber auch eine gewisse Isolation zwischen dem Dockercontainer und dem Hostsystem weg. Spricht wenn ein Angreiffer Zugriff auf den DOcker container hat kann er auch einfach das ganze System komprimieren.
 
 ```
 docker run -d --restart=unless-stopped \
     -p 80:80 -p 443:443 \
+    --privileged \
     rancher/rancher:latest \
     --acme-domain rancher.bbzbl-it.dev
 ```
