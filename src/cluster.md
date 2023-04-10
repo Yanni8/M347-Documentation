@@ -84,7 +84,7 @@ Anschlissend dauerte es etwa 10 minuten bis alle Server korrekt eingerichtet war
 
 Anschliessend habe ich einen Test `Nginx` Container Deployt. Das Deployen des Containers und das erstellen eines Ingres verlief ohne grössere Probleme. Leider stellte sich etwas später heraus, dass der Ingress jedesm mal nachdem man ihn anspricht timeouted. Laut dem Internet liegt das häuffig daran das der Port `8472/UDP` nicht geöffnet ist. Allso habe ich `nmap` verwendet um herauszufinden, ob der Port wirklich nicht offen ist.
 ```bash
-root@prodcluster-ew1:~# nmap -p8472 -sU <IP>
+$nmap -p8472 -sU <IP>
 Starting Nmap 7.80 ( https://nmap.org )
 Nmap scan report for ****
 Host is up (0.0010s latency).
