@@ -70,6 +70,11 @@ Nach dem Hnzufügen konnte ich einfach auf der View `Cluster Erstellen` meinen C
 ![Screenshot from 2023-04-09 14-38-39](https://user-images.githubusercontent.com/99135388/230937141-45e7b4ec-11fa-4647-b12c-890ac1369546.png)
 
 Nachher musste ich zuerst bei meinem Cloud provider ein `Privates Network` und eine `Placement Group` erstellen. Zwar ist dieser Schritt optional allerdings bietet er grosse Vorteile. Ein `Privates Network` sorgt dafür, dass bestimmte möglicherweise sensitive Ports nicht öffentliche erreichbar sind und zudem traffic nicht mitgeschnitten werden kann (auch wenn theoretisch jeglicher Traffic encryptet sein sollte). Eine `Placement Group` sorgt dafür, dass die Server Physikalisch und Logisch voneiander unabhängig sind. So würde z.B. der Ausfall von enem Networkswitch nur dazu führen dass 1 und icht gleich alle 3 Nodes nichtmehr erreichbar sind. 
-
+<br/> <br/>
+Nachdem dieser Schritt erledigt war konnte ich einfach über die UI das Kluster initialisieren. 
 
 ![Screenshot from 2023-04-09 14-43-49](https://user-images.githubusercontent.com/99135388/230937059-e84c8bc0-50fc-4613-afc8-a48dd9b8da96.png)
+
+Anschlissend dauerte es etwa 10 minuten bis alle Server korrekt eingerichtet waren und das Cluster erreichbar war. 
+
+![Screenshot from 2023-04-09 16-05-14](https://user-images.githubusercontent.com/99135388/230939681-55190075-38a7-44a8-bc71-ea9f95b813e8.png)
