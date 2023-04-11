@@ -103,3 +103,7 @@ Und tatsächlich stellte sich heraus, dass der Port geschlossen war. Nach einer 
     flannel_network_provider:
       iface: <Interface>
 ```
+
+Nachdem nun das Cluster voll erreichbar ist, kann ich nun auch damit anfangen, meine ersten Projecte zu Deployen. Wie bereits gesagt, sollte das Cluster dafür verwendent werden, um das zu relasieren brauche ich einfach die Projecte zu Dockorisieren und anschliessend das Image auf ein Registroy Pushen um es anschliessend auf das Cluster zu Pullen. Glücklicherweise kenne ich Docker schon etwas länger und habe das bereits bei so gut wie allen Projekten gemacht.
+<br/>
+Etwas, was ich allerdings nochnicht gemacht habe ist die ganzen Images als non root user auszuführen. In den meisten fällen wird die Application bereits von einem non root user ausgeführt. Die einzige Ausnahme dafür stellen meine `nginx` Container dar. Glücklicherweise musste ich um sie als non root User zu starten lediglich das Baseimage von `nginx` auf [`nginx-unpriviliged`](https://hub.docker.com/r/nginxinc/nginx-unprivileged) abändern.
