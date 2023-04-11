@@ -1,3 +1,5 @@
+# M347 - Devcontaier
+
 ## Einführung
 
 Unser Projekt besteht darin, eine Entwicklungsumgebung für [Python](https://www.python.org/) in einem [Docker Container](https://www.docker.com/resources/what-container/) zu erstellen. Diese Entwicklungsumgebung wird Python an sich, [Visual Studio Code](https://code.visualstudio.com/) und einige nützliche Plug-Ins für VSC enthalten. <br/><br/>
@@ -16,19 +18,21 @@ Im nächsten Schritt können Sie sich das Github Repository von Github holen. Da
 ```bash
 git clone https://github.com/Yanni8/M347-DevContainer.git
 ```
+<br>
 
 <!--- URL anpassen sobald auf BBZBL-IT Repo --->
 
 ## SSH Key aufsetzen für Github
-<!--- TODO --->
+<!--- TODO => https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent --->
 [...] <br/><br/>
 
 # Erste Schritte mit Docker
 
 ## Docker Container Starten
-<!--- TODO --->
-[...] <br/><br/>
+Um den Devcontainer starten zu können, müssen Sie sich zuerst noch eine Extension in VSC herunterladen. Dazu gehen Sie in VSC in die Extensions, suchen dort "Dev Container" und laden sich diese Extension herunter. <br>
+Sobald Sie das erledigt haben, können Sie in VSC auf `File` -> `Open Folder` -> Ordner mit dem Devcontainer auswählen und anschliessend das Main-File öffnen. Sobald Sie das gemacht haben, können Sie in VSC unten links auf das grüne Rechteck klicken und dann auf `Reopen in container` <br>
+Jetzt können Sie in VSC unter `Terminal` ein neues Terminal-Fenster öffnen und mit dem Docker Container arbeiten. <br/><br/>
 
 ## Mit Docker arbeiten
-<!--- TODO --->
+<!--- TODO => Docker Befehle usw. --->
 [...] <br/><br/>
