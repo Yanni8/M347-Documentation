@@ -18,6 +18,7 @@ git clone https://github.com/Yanni8/M347-DevContainer.git
 
 ## Docker Container Starten
 Um den Devcontainer starten zu können, müssen Sie sich zuerst noch eine Extension in VSC herunterladen. Dazu gehen Sie in VSC in die Extensions, suchen dort "Dev Container" und laden sich diese Extension herunter. <br>
+Man darf umbedingt auch nicht vergessen das `.env` file mit allen nötigen Variablen zu füllen. Diese sind auffindbar im `.env.example.local` 
 Sobald Sie das erledigt haben, können Sie in VSC auf `File` -> `Open Folder` -> Ordner mit dem Devcontainer auswählen und anschliessend das Main-File öffnen. Sobald Sie das gemacht haben, können Sie in VSC unten links auf das grüne Rechteck klicken und dann auf `Reopen in container` <br>
 Jetzt können Sie in VSC unter `Terminal` ein neues Terminal-Fenster öffnen und mit dem Docker Container arbeiten. <br>
 
